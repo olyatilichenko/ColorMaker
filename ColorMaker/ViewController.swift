@@ -9,17 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: Outlets
+    
+    @IBOutlet var colorView: UIView!
+    @IBOutlet weak var colorRed: UISlider!
+    @IBOutlet var colorGreen: UISlider!
+    @IBOutlet var colorBlue: UISlider!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        changeColorComponent()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func changeColorComponent() {
+        
+        if self.colorRed == nil {
+            return
+        }
+        
+        let r: Float = self.colorRed.value
+        let g: Float = self.colorGreen.value
+        let b: Float = self.colorBlue.value
+        
+        let cgr: CGFloat = CGFloat(r)
+        let cgg: CGFloat = CGFloat(g)
+        let cgb: CGFloat = CGFloat(b)
+        
+        colorView.backgroundColor = UIColor(red: cgr, green: cgg, blue: cgb, alpha: 1)
     }
-
 
 }
 
